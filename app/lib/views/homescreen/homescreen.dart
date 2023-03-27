@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
@@ -5,6 +6,20 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: GestureDetector(
+          child: Text('Log out'),
+          onTap: () {
+            Future<void> _signOut() async {
+              await FirebaseAuth.instance.signOut();
+              print("logout");
+            }
+
+            _signOut();
+          },
+        ),
+      ),
+    );
   }
 }
