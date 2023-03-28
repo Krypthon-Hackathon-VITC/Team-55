@@ -169,10 +169,8 @@ class _ScannerPageState extends State<ScannerPage> {
                     await Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => CalenderDesc(
-                          desc: 'asdffgg',
-                          name: 'asdffg',
-                          salts: ['zdfff'],
-                          tags: ['ffdf'],
+                          imagePath: image.path,
+
                           /*imagePath: image.path,
                           file: File(image.path),
                           fileName: image.name,*/

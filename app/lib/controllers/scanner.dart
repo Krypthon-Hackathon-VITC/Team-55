@@ -32,7 +32,8 @@ class ScannerService {
 
     // listen for response
     response.stream.transform(utf8.decoder).listen((value) {
-      print(value);
+      //print(value);
     });
+    return response.stream.transform(utf8.decoder);
   }
 }
