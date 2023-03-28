@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:app/views/Profile.dart';
 import 'package:app/views/homepage/homepage.dart';
 import 'package:app/views/mainmenu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -79,7 +80,7 @@ class OtpScreen extends StatelessWidget {
                               builder: (BuildContext context, Widget? child) {
                                 return const MaterialApp(
                                   debugShowCheckedModeBanner: false,
-                                  home: MainMenu(),
+                                  home: ProfilePage(),
                                 );
                               },
                             )),
@@ -117,18 +118,23 @@ class OtpScreen extends StatelessWidget {
                                 fontSize: 16.sp,
                                 color: const Color(0xffC8C8C8))))),
                 Container(
-                    width: 163.w,
-                    height: 44.h,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xffB6B6B6)),
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(11)),
-                    child: TextButton(
-                        onPressed: () {},
-                        child: Text("Call me in 16s",
-                            style: GoogleFonts.poppins(
-                                fontSize: 16.sp,
-                                color: const Color(0XFFC8C8C8))))),
+                  width: 163.w,
+                  height: 44.h,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xffB6B6B6)),
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(11)),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Call me in 16s",
+                      style: GoogleFonts.poppins(
+                        fontSize: 16.sp,
+                        color: const Color(0XFFC8C8C8),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           )

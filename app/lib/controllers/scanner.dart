@@ -1,3 +1,4 @@
+import 'package:app/constants.dart';
 import 'package:path/path.dart';
 import 'package:async/async.dart';
 import 'dart:io';
@@ -13,7 +14,7 @@ class ScannerService {
     var length = await imageFile.length();
 
     // string to uri
-    var uri = Uri.parse("https://api.frubay.com/scan");
+    var uri = Uri.parse("${APIBase}/scan");
 
     // create multipart request
     var request = new http.MultipartRequest("POST", uri);

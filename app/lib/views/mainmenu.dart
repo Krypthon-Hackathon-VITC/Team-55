@@ -1,4 +1,5 @@
 import 'package:app/constants.dart';
+import 'package:app/controllers/profile.dart';
 import 'package:app/views/homepage/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

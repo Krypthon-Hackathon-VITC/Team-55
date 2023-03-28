@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+String APIBase = 'https://d708-122-187-117-178.in.ngrok.io';
+String APICustomer = '/customer';
+
 String indianFlag =
     'https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png';
 

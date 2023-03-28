@@ -599,17 +599,7 @@ class Header extends StatelessWidget {
                     color: primaryColor,
                   ),
                 ),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext) => CalenderDesc(
-                                desc: desc,
-                                name: name,
-                                salts: salts,
-                                tags: tags,
-                              )));
-                },
+                onTap: () {},
               ),
               GestureDetector(
                 child: Icon(

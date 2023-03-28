@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:app/constants.dart';
 import 'package:app/controllers/scanner.dart';
+import 'package:app/views/scanner/calender_desc.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -167,10 +168,14 @@ class _ScannerPageState extends State<ScannerPage> {
 
                     await Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => DisplayPictureScreen(
-                          imagePath: image.path,
+                        builder: (context) => CalenderDesc(
+                          desc: 'asdffgg',
+                          name: 'asdffg',
+                          salts: ['zdfff'],
+                          tags: ['ffdf'],
+                          /*imagePath: image.path,
                           file: File(image.path),
-                          fileName: image.name,
+                          fileName: image.name,*/
                         ),
                       ),
                     );

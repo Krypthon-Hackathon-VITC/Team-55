@@ -34,8 +34,7 @@ class MedMitra extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (BuildContext context, Widget? child) {
-          print(FirebaseAuth.instance.currentUser?.displayName);
-          return MaterialApp(
+          return const MaterialApp(
             debugShowCheckedModeBanner: false,
             home: MainMenu(),
           );
