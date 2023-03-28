@@ -36,6 +36,11 @@ class _OnBoardPageState extends State<OnBoardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: onBoardBackground,
+      appBar: AppBar(
+        backgroundColor: onBoardBackground,
+        toolbarHeight: 0,
+        elevation: 0,
+      ),
       body: Column(
         children: [
           Expanded(
@@ -54,7 +59,7 @@ class _OnBoardPageState extends State<OnBoardPage> {
             ),
           ),
           Container(
-            height: 145.h,
+            height: 140.h,
             width: double.infinity,
             child: Padding(
               padding: EdgeInsets.only(left: 40.w, right: 40.w),
@@ -68,14 +73,14 @@ class _OnBoardPageState extends State<OnBoardPage> {
                     children: List.generate(
                         3,
                         (index) => Padding(
-                              padding: EdgeInsets.only(right: 5.w, top: 25.h),
+                              padding: EdgeInsets.only(right: 5.w, top: 20.h),
                               child: BuildDots(index),
                             )),
                   ),
                   GestureDetector(
                     child: Container(
                       width: 114.w,
-                      height: 52.h,
+                      height: 42.h,
                       decoration: BoxDecoration(
                         color: primaryColor,
                         borderRadius: BorderRadius.circular(26.sp),

@@ -48,6 +48,9 @@ dependencies:
   path_provider: ^2.0.14
   path:
   flutter_svg: ^2.0.4
+  http: ^0.13.5
+  http_parser: ^4.0.2
+  number_selector: ^1.0.5
 
 dev_dependencies:
   flutter_test:

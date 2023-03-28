@@ -1,6 +1,9 @@
+import 'package:api_cache_manager/utils/cache_manager.dart';
 import 'package:app/constants.dart';
+import 'package:app/views/scanner/Calender_desc.dart';
 import 'package:app/views/scanner/scanner.dart';
 import 'package:camera/camera.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -34,6 +37,7 @@ class HomePage extends StatelessWidget {
         DraggableScrollableSheet(
           initialChildSize: 0.56,
           minChildSize: 0.56,
+          maxChildSize: 0.88,
           builder: ((context, scrollController) {
             return Container(
               decoration: BoxDecoration(
@@ -93,7 +97,7 @@ class DoctorSection extends StatelessWidget {
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
-                    color: Colors.black),
+                    color: darkGrey),
                 child: const Text('Our Specialists'),
               ),
               Text(
@@ -103,46 +107,69 @@ class DoctorSection extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
-          height: 40.h,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Container(
-                  width: 83.w,
-                  height: 33.h,
-                  decoration: BoxDecoration(
-                      color: primaryColor,
-                      borderRadius: BorderRadius.circular(50)),
-                  child: Center(
-                    child: DefaultTextStyle(
-                      style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          color: Colors.white),
-                      child: const Text('ENT'),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 40.h,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    width: 83.w,
+                    height: 33.h,
+                    decoration: BoxDecoration(
+                        color: index == 0 ? primaryColor : appBarColor,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Center(
+                      child: DefaultTextStyle(
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                            color: index == 0 ? Colors.white : darkGrey),
+                        child: const Text('ENT'),
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
         SizedBox(
-          height: 110.h,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return CallItem();
-            },
-          ),
-        ),
+            height: 130.h,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                DocotItemPhoto(
+                  path: 'assets/images/doctor1.png',
+                  title: 'Dr. Rajashree',
+                ),
+                DocotItemPhoto(
+                  path: 'assets/images/doctor2.png',
+                  title: 'Dr. Sufna M',
+                ),
+                DocotItemPhoto(
+                  path: 'assets/images/doctor3.png',
+                  title: 'Dr. S Mathur',
+                ),
+                DocotItemPhoto(
+                  path: 'assets/images/doctor4.png',
+                  title: 'Dr. Rajesh S',
+                ),
+                DocotItemPhoto(
+                  path: 'assets/images/doctor5.png',
+                  title: 'Dr. Pushkar R',
+                ),
+                DocotItemPhoto(
+                  path: 'assets/images/doctor6.png',
+                  title: 'Dr. Rajashree',
+                ),
+              ],
+            )),
       ],
     );
   }
@@ -166,7 +193,7 @@ class TrackSection extends StatelessWidget {
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
-                    color: Colors.black),
+                    color: darkGrey),
                 child: const Text('Your Medicines'),
               ),
               Text(
@@ -198,6 +225,7 @@ class CallSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
           padding: EdgeInsets.only(left: 10.w, top: 5.h, right: 10.w),
@@ -208,7 +236,7 @@ class CallSection extends StatelessWidget {
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
-                    color: Colors.black),
+                    color: darkGrey),
                 child: const Text('Call doctor now'),
               ),
               Text(
@@ -219,30 +247,43 @@ class CallSection extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 120.h,
-          child: ListView(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            children: const [
-              CallItem(),
-              CallItem(),
-              CallItem(),
-              CallItem(),
-              CallItem(),
-              CallItem(),
-              CallItem(),
-            ],
-          ),
-        ),
+            height: 100.h,
+            width: double.infinity,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                CallItem(
+                  path: 'assets/svg/nurse.svg',
+                  title: 'Nurse',
+                ),
+                CallItem(
+                  path: 'assets/svg/covid.svg',
+                  title: 'Covid 19',
+                ),
+                CallItem(
+                  path: 'assets/svg/dialysis.svg',
+                  title: 'Dailysis',
+                ),
+                CallItem(
+                  path: 'assets/svg/checkup.svg',
+                  title: 'Checkup',
+                ),
+                CallItem(
+                  path: 'assets/svg/physio.svg',
+                  title: 'Physio',
+                ),
+              ],
+            )),
       ],
     );
   }
 }
 
 class CallItem extends StatelessWidget {
-  const CallItem({
-    super.key,
-  });
+  CallItem({super.key, required this.path, required this.title});
+
+  String path;
+  String title;
 
   @override
   Widget build(BuildContext context) {
@@ -253,7 +294,7 @@ class CallItem extends StatelessWidget {
           CircleAvatar(
               radius: 30,
               backgroundColor: primaryBackgroundColor,
-              child: SvgPicture.asset('assets/icons/medicine.svg')),
+              child: SvgPicture.asset(path)),
           Padding(
             padding: EdgeInsets.only(top: 6.h),
             child: DefaultTextStyle(
@@ -261,9 +302,69 @@ class CallItem extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   fontSize: 12.sp,
                   color: Colors.black),
-              child: const Text('Nurse'),
+              child: Text(title),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class DocotItemPhoto extends StatelessWidget {
+  DocotItemPhoto({super.key, required this.path, required this.title});
+
+  String path;
+  String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        children: [
+          Container(
+            height: 62.sp,
+            width: 62.sp,
+            child: CircleAvatar(
+              backgroundImage: AssetImage(path),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 6.h),
+            child: DefaultTextStyle(
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12.sp,
+                  color: Colors.black),
+              child: Text(title),
+            ),
+          ),
+          SizedBox(
+            width: 80.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(1.0.sp),
+                      child: SvgPicture.asset(
+                        'assets/svg/star.svg',
+                        height: 10.sp,
+                        width: 10.sp,
+                      ),
+                    ),
+                    Text('4.7')
+                  ],
+                ),
+                Text(
+                  '+1.6k',
+                  style: TextStyle(color: primaryColor),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -315,7 +416,7 @@ class Card extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(left: 5.w, right: 5.w),
+              padding: EdgeInsets.only(left: 5.w, right: 5.w, top: 6.h),
               child: Container(
                 height: 23.h,
                 decoration: const BoxDecoration(
@@ -325,8 +426,8 @@ class Card extends StatelessWidget {
                       colors: [gradientColor1, gradientColor2],
                     ),
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(7),
+                      bottomRight: Radius.circular(7),
                     )),
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
@@ -461,9 +562,19 @@ class Header extends StatelessWidget {
             SizedBox(
               width: 2.w,
             ),
-            Icon(
-              PhosphorIcons.caretDown,
-              size: 20.0.sp,
+            GestureDetector(
+              child: Icon(
+                PhosphorIcons.caretDown,
+                size: 20.0.sp,
+              ),
+              onTap: () {
+                Future<void> _signOut() async {
+                  await FirebaseAuth.instance.signOut();
+                }
+
+                _signOut();
+                APICacheManager().emptyCache();
+              },
             ),
           ],
         ),
@@ -479,13 +590,26 @@ class Header extends StatelessWidget {
                   color: primaryColor,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: 15.w),
-                child: Icon(
-                  PhosphorIcons.microphoneFill,
-                  size: 26.0.sp,
-                  color: primaryColor,
+              GestureDetector(
+                child: Padding(
+                  padding: EdgeInsets.only(right: 15.w),
+                  child: Icon(
+                    PhosphorIcons.microphoneFill,
+                    size: 26.0.sp,
+                    color: primaryColor,
+                  ),
                 ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext) => CalenderDesc(
+                                desc: desc,
+                                name: name,
+                                salts: salts,
+                                tags: tags,
+                              )));
+                },
               ),
               GestureDetector(
                 child: Icon(
@@ -498,7 +622,7 @@ class Header extends StatelessWidget {
                   final cameras = await availableCameras();
 
                   // Get a specific camera from the list of available cameras.
-                  final firstCamera = cameras.first;
+                  final firstCamera = cameras[0];
                   // ignore: use_build_context_synchronously
                   Navigator.push(
                       context,

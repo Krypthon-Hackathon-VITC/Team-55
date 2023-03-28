@@ -1,4 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:app/views/homepage/homepage.dart';
+import 'package:app/views/mainmenu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,7 +39,7 @@ class OtpScreen extends StatelessWidget {
             style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 fontSize: 20.sp,
-                color: Color.fromARGB(255, 2, 2, 2))),
+                color: const Color.fromARGB(255, 2, 2, 2))),
       ),
       body: SafeArea(
         child: Column(children: [
@@ -45,7 +48,8 @@ class OtpScreen extends StatelessWidget {
             child: Text("We have sent a verification code to",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
-                    fontSize: 18.sp, color: Color.fromARGB(255, 0, 0, 0))),
+                    fontSize: 18.sp,
+                    color: const Color.fromARGB(255, 0, 0, 0))),
           ),
           Text(
             "+91 XXXXX-" +
@@ -68,7 +72,17 @@ class OtpScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: ((context) => HomePage()),
+                        builder: ((context) => ScreenUtilInit(
+                              designSize: const Size(390, 844),
+                              minTextAdapt: true,
+                              splitScreenMode: true,
+                              builder: (BuildContext context, Widget? child) {
+                                return const MaterialApp(
+                                  debugShowCheckedModeBanner: false,
+                                  home: MainMenu(),
+                                );
+                              },
+                            )),
                       ),
                     );
                   } catch (e) {
@@ -80,7 +94,7 @@ class OtpScreen extends StatelessWidget {
                 pinBoxHeight: 51,
                 pinBoxRadius: 8,
                 pinBoxBorderWidth: 1.5,
-                defaultBorderColor: Color(0xFFB6B6B6),
+                defaultBorderColor: const Color(0xFFB6B6B6),
               ),
             ),
           ),
@@ -93,26 +107,28 @@ class OtpScreen extends StatelessWidget {
                     width: 163.w,
                     height: 44.h,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xffB6B6B6)),
+                        border: Border.all(color: const Color(0xffB6B6B6)),
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(11)),
                     child: TextButton(
                         onPressed: () {},
                         child: Text("Resend SMS in 16s",
                             style: GoogleFonts.poppins(
-                                fontSize: 16.sp, color: Color(0xffC8C8C8))))),
+                                fontSize: 16.sp,
+                                color: const Color(0xffC8C8C8))))),
                 Container(
                     width: 163.w,
                     height: 44.h,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xffB6B6B6)),
+                        border: Border.all(color: const Color(0xffB6B6B6)),
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(11)),
                     child: TextButton(
                         onPressed: () {},
                         child: Text("Call me in 16s",
                             style: GoogleFonts.poppins(
-                                fontSize: 16.sp, color: Color(0XFFC8C8C8))))),
+                                fontSize: 16.sp,
+                                color: const Color(0XFFC8C8C8))))),
               ],
             ),
           )

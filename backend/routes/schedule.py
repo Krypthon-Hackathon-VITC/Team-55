@@ -10,6 +10,6 @@ router = APIRouter(
     tags=['schedule'],
 )
 
-@router.post('schedule')
+@router.post('/schedule')
 async def CreatSchedule(response:schedule_schema.CreateSchedule):
     return response

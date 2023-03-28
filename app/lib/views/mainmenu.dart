@@ -3,6 +3,8 @@ import 'package:app/views/homepage/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
 
@@ -37,7 +39,7 @@ class _MainMenuState extends State<MainMenu>
       bottomNavigationBar: Container(
         decoration:
             BoxDecoration(border: Border(top: BorderSide(color: Colors.grey))),
-        height: 89,
+        height: 89.h,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,

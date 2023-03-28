@@ -34,6 +34,7 @@ class MedMitra extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (BuildContext context, Widget? child) {
+          print(FirebaseAuth.instance.currentUser?.displayName);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             home: MainMenu(),
@@ -42,7 +43,7 @@ class MedMitra extends StatelessWidget {
       );
     } else if (isOnBoard == true) {
       return ScreenUtilInit(
-        designSize: const Size(360, 690),
+        designSize: const Size(390, 690),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
@@ -54,7 +55,7 @@ class MedMitra extends StatelessWidget {
       );
     } else {
       return ScreenUtilInit(
-        designSize: const Size(360, 690),
+        designSize: const Size(390, 690),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
