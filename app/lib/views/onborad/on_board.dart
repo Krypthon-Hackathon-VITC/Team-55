@@ -5,7 +5,6 @@ import 'package:app/views/authentications/login_page.dart';
 import 'package:app/views/onborad/on_board_screen1.dart';
 import 'package:app/views/onborad/on_board_screen2.dart';
 import 'package:app/views/onborad/on_board_screen3.dart';
-import 'package:app/views/homescreen/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

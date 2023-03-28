@@ -1,7 +1,8 @@
 import 'package:api_cache_manager/utils/cache_manager.dart';
 import 'package:app/views/authentications/login_page.dart';
+import 'package:app/views/homepage/homepage.dart';
+import 'package:app/views/mainmenu.dart';
 import 'package:app/views/onborad/on_board.dart';
-import 'package:app/views/homescreen/homescreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,15 +30,16 @@ class MedMitra extends StatelessWidget {
 
     if (isLoggedIn) {
       return ScreenUtilInit(
-          designSize: const Size(360, 690),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return const MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: Homepage(),
-            );
-          });
+        designSize: const Size(390, 844),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (BuildContext context, Widget? child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: MainMenu(),
+          );
+        },
+      );
     } else if (isOnBoard == true) {
       return ScreenUtilInit(
         designSize: const Size(360, 690),

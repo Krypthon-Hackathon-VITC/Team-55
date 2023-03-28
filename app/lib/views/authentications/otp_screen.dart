@@ -1,4 +1,4 @@
-import 'package:app/views/homescreen/homescreen.dart';
+import 'package:app/views/homepage/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -68,7 +68,7 @@ class OtpScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: ((context) => Homepage()),
+                        builder: ((context) => HomePage()),
                       ),
                     );
                   } catch (e) {
