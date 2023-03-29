@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:path/path.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -584,10 +585,26 @@ class Header extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(right: 15.w),
-                child: Icon(
-                  PhosphorIcons.personSimpleWalk,
-                  size: 26.0.sp,
-                  color: primaryColor,
+                child: GestureDetector(
+                  child: Icon(
+                    PhosphorIcons.chatFill,
+                    size: 26.0.sp,
+                    color: primaryColor,
+                  ),
+                  onTap: () async {
+                    dynamic conversationObject = {
+                      'appId':
+                          '156ceee463c1537558704536f179c15e', // The APP_ID obtained from kommunicate dashboard.
+                    };
+                    KommunicateFlutterPlugin.buildConversation(
+                            conversationObject)
+                        .then((clientConversationId) {
+                      print("Conversation builder success : " +
+                          clientConversationId.toString());
+                    }).catchError((error) {
+                      print("Conversation builder error : " + error.toString());
+                    });
+                  },
                 ),
               ),
               GestureDetector(
