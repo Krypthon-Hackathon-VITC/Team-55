@@ -70,7 +70,7 @@ class OtpScreen extends StatelessWidget {
                   );
                   try {
                     await auth.signInWithCredential(credential);
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                         builder: ((context) => ScreenUtilInit(
@@ -85,6 +85,8 @@ class OtpScreen extends StatelessWidget {
                               },
                             )),
                       ),
+                      (route) =>
+                          false, //if you want to disable back feature set to false
                     );
                   } catch (e) {
                     print(e);

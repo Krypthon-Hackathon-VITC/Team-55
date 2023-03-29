@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-String APIBase =
-    'https://99ce-2409-40f4-2c-2e7b-212f-95d6-3c1b-a4b3.ap.ngrok.io';
+String APIBase = 'https://fd5b-122-187-117-178.in.ngrok.io';
 String APICustomer = '/customer';
 
 String indianFlag =
